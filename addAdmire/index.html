@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+
+  </div>
+  <script src="./index.js"></script>
+  <script>
+    const likeButton = new LikeButton2()
+    const wrapper = document.getElementById('app')
+    wrapper.appendChild(likeButton.render()) // 第一次插入 DOM 元素
+    likeButton.onStateChange = (oldEl, newEl) => {
+      wrapper.insertBefore(newEl, oldEl) // 插入新的元素
+      wrapper.removeChild(oldEl) // 删除旧的元素
+    }
+  </script>
+</body>
+</html>
