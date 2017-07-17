@@ -51,13 +51,13 @@ class CommentInput extends Component {
   }
   handleSubmit() {
     if(this.props.onSubmit) {
-    console.log('submit')
       const {username, comment} = this.state
       this.props.onSubmit({username, comment})
     }
     this.setState({comment:''})
   }
   render() {
+    const { username,comment } = this.props
     return (
       <div className="comment-input">
         <div className="comment-field">
