@@ -6,3 +6,10 @@
   border: 1px solid #f1f1f1;
   padding: 20px;
 }
+.comment-delete {
+  display: block;
+}
+code {
+  background-color: #e1e1e1;
+  color: #0f0f0f;
+}
