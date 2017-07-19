@@ -66,7 +66,53 @@ class Card2 extends React.Component {
 }
 
 
-ReactDOM.render(<AutoFocusInput />, document.getElementById('root'));
+/**
+ * dangerouslySetHtml
+ * 处于安全原因的考虑  XSS攻击等，在React中插入的所有内容都会被自动转义 相当于jQuery中的text()
+ */
+
+class Editor extends React.Component {
+  constructor () {
+    super()
+    this.state = {
+      content: `<h1>React.js 小书</h1>`
+    }
+  }
+  render() {
+    return (<div className="editor-wrap">
+      {this.state.content}
+    </div>)
+  }
+}
+/**
+ * 以上 h1标签不会被渲染到页面，而是以文本形式渲染
+ * 如果实在需要，可使用dangerouslySetInnerHTML
+ */
+
+class EditorDanger extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      content: `<h1>React.js 小书</h1>`
+    }
+  }
+  render() {
+    return (
+      <div style={{fontSize: '12px', color: 'red'}} dangerouslySetInnerHTML={{__html: this.state.content}}></div>
+    )
+  }
+}
+/**
+ * 在jsx中使用style, 需要先将其转化为一个对象，并采用驼峰命名
+ */
+
+
+
+/**
+ * 
+ */
+
+ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
 
 
